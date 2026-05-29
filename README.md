@@ -1,77 +1,51 @@
 # League of Legends Player Analytics
 
-## 1. Project Overview
-This project is a personal showcase project built with Python, Jupyter Notebook, and the Riot Games API.
+A portfolio analytics project built with Python, Jupyter Notebook, and the Riot Games API. The project demonstrates an end-to-end workflow for collecting, structuring, analyzing, and visualizing League of Legends player match data.
 
-Its purpose is to demonstrate an end-to-end data pipeline for:
-- connecting to the Riot API,
-- retrieving player account data,
-- collecting match history,
-- extracting player-level match statistics,
-- and exporting structured data for future analysis.
+## Overview
 
-The project was first validated on a personal Riot account and later extended to a high-activity public account to build a larger dataset for analysis.
+This project covers:
 
----
+- Riot API connectivity and account lookup
+- Match history and match-level data extraction
+- Batch collection of player performance records
+- CSV-based data structuring for analysis
+- Exploratory analysis and visual insights in Jupyter Notebook
 
-## 2. Project Goals
-The main goals of this project are:
+## Notebooks
 
-- Authenticate with the Riot API using a developer key
-- Convert Riot ID into player `puuid`
-- Retrieve summoner profile information
-- Fetch recent match history
-- Extract player-specific statistics from match details
-- Export match data into CSV format
-- Build a foundation for future analysis, visualization, and dashboard development
+- `01_api_test.ipynb` — Riot API connection test, Riot ID lookup, PUUID retrieval, summoner profile check
+- `02_match_history.ipynb` — recent match IDs, single-match details, sample player-level extraction
+- `03_bulk_match_extract.ipynb` — batch match collection and raw CSV export
+- `04_basic_analysis.ipynb` — summary metrics, champion-level analysis, processed outputs
+- `05_visual_insights.ipynb` — charts for champion usage, win/loss results, KDA distribution, and gold vs damage patterns
 
----
+## Outputs
 
-## 3. Current Status
-The current project version has successfully completed the following:
+- `data/processed/champion_summary.csv`
+- `data/processed/top_champion_visual_summary.csv`
 
-### Completed
-- VS Code project setup
-- Python virtual environment setup
-- Dependency installation
-- `.env` configuration for Riot API key
-- Riot ID to `puuid` lookup
-- Summoner profile retrieval
-- Recent match history retrieval
-- Single-match detail extraction
-- Batch extraction workflow validation
-- Manual CSV export for stable output
-- Public account dataset extraction with 100 matches
+## Tech Stack
 
-### Current Progress
-The project was first tested on a personal Riot account, where only one recent match was available. This was sufficient to validate the API pipeline.
+- Python
+- Jupyter Notebook
+- Riot Games API
+- riotwatcher
+- pandas
+- numpy
+- matplotlib
 
-The workflow was then successfully scaled to the public account `Hide on bush#KR1`, from which 100 matches were retrieved and exported as a structured dataset.
+## Skills Demonstrated
 
-### Current Limitation
-A pandas compatibility issue was encountered in the current local environment, so CSV export was temporarily completed using Python's built-in CSV writer instead of a DataFrame-based workflow.
+- API-based data extraction
+- Data cleaning and structuring
+- Exploratory data analysis
+- Data visualization
+- Reproducible analytics workflow design
+- Debugging API and environment issues
 
-### Planned Improvement
-In the next phase, the environment can be cleaned up to restore full pandas-based analysis, and the extracted dataset can be used for exploratory analysis, visualization, and performance profiling.
+## Notes
 
----
-
-## 4. Project Structure
-```text
-lol-player-analytics/
-│
-├─ .venv/
-├─ .env
-├─ .gitignore
-├─ requirements.txt
-├─ README.md
-├─ notebooks/
-│  ├─ 01_api_test.ipynb
-│  ├─ 02_match_history.ipynb
-│  └─ 03_bulk_match_extract.ipynb
-├─ src/
-├─ data/
-│  ├─ raw/
-│  ├─ interim/
-│  └─ processed/
-└─ outputs/
+- Raw and intermediate data files are excluded from version control.
+- Some raw fields may contain noisy values such as `Invalid`, reflecting source data quality rather than pipeline failure.
+- CSV export was used as a stable intermediate output format during development.
